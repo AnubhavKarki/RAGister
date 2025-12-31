@@ -1,5 +1,6 @@
 ```markdown
 # RAGister
+## Contact me to gain access!
 
 A production-ready Retrieval-Augmented Generation (RAG) Q&A pipeline for private documents supporting PDF, DOCX, and Wikipedia sources. Features Pinecone and Chroma vector stores with conversation memory.
 
