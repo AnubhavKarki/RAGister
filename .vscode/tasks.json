@@ -1,0 +1,37 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Streamlit",
+      "type": "shell",
+      "command": "streamlit",
+      "args": ["run", "rag_pipeline_gui.py", "--server.port", "8501", "--server.address", "0.0.0.0"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "streamlit",
+        "pattern": [
+          {
+            "regexp": "^(.*)$",
+            "file": 1,
+            "location": 1,
+            "message": 1
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*\\$ streamlit run.*$",
+          "endsPattern": "^You can now view your Streamlit app.*$"
+        }
+      }
+    }
+  ]
+}

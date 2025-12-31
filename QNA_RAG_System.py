@@ -35,14 +35,6 @@ def load_from_wikipedia(query, lang="en", load_max_docs=1):
     return data
 
 
-"""# Chunking
-Chunking is the process of breaking down large pieces of text into smaller segments. It's an essential technique that helps optimize the relevance of the content we get back from a vector database.
-
-As a rule of thumb, if a chunk of text makes sense without the surrounding context to a human, it will make sense to the language model as well.
-
-Finding the optimal chunk size for the documents in the corpus is crucial to ensure that the search results are accurate and relevant.
-"""
-
 
 def chunk_data(data, chunk_size=256, chunk_overlap=50):
     from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -54,9 +46,7 @@ def chunk_data(data, chunk_size=256, chunk_overlap=50):
     return chunks
 
 
-"""# Calculate the cost for running embeddings"""
-
-
+# Calculate the cost for running embeddings
 def print_embedding_cost(texts):
     import tiktoken
 
@@ -66,10 +56,7 @@ def print_embedding_cost(texts):
     print(f"Embedding Cost in USD: {total_tokens / 1000 * 0.0004:.6f}")
 
 
-"""## Embedding and Uploading to a Vector Database (Pinecone)"""
-
-
-# IMPORTANT: Ensure 'langchain-pinecone' is installed. You might need to run:
+# Embedding and Uploading to a Vector Database (Pinecone)
 def insert_or_fetch_embeddings(index_name, chunks):
     import pinecone
     from langchain_openai import OpenAIEmbeddings
@@ -155,13 +142,7 @@ def ask_and_get_answer(vector_store, q, k=3):
 
     return chain.invoke({"input": q}).content
 
-
-"""# Chroma
-
-Chroma is an open source in-memory vector store, making fit for small to medium projects. It is an alternative to pinecone, but with less red tape.
-"""
-
-
+# Chroma
 # Create Embeddings:
 def create_embeddings_chroma(chunks, persist_directory="./"):
     from langchain_community.vectorstores import Chroma
@@ -187,7 +168,7 @@ def load_embeddings_chroma(persist_directory="./chroma_db"):
     return vector_store
 
 
-"""# Adding Memory (Chat History)"""
+# Adding Memory (Chat History)
 
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
